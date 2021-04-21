@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text, Image, 
+  TouchableOpacity, SafeAreaView } from 'react-native'
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
+const Home = () => {
+  function renderForm() {
     return (
-      <View>
-        <Text> Home </Text>
+      <View style  ={{
+        flex:1, justifyContent:'center', alignItems:'center'
+      }}>
+        <Text>hhh</Text>
       </View>
-    );
+    )
   }
+  return (
+    <SafeAreaView>
+      {renderForm()}
+    </SafeAreaView>
+  )
 }
+export default Home;
