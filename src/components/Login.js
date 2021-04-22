@@ -1,13 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import {
   Text, View, TouchableOpacity, Image,
   KeyboardAvoidingView, Platform, ScrollView, TextInput
 } from 'react-native';
 import { FONTS, COLORS, icons, images, SIZES } from '../constants'
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
+
 
 const Login = ({ navigation }) => {
   const [showPassword, setPassword] = React.useState(false)
+  const [username, password] = React.useState()
   function renderLogo() {
     return (
       <View style={{
@@ -102,7 +105,28 @@ const Login = ({ navigation }) => {
             justifyContent: 'center'
           }}
             onPress={() => {
+              if (!!username && !!password) {
+                return (
+                  alert('Vui Lòng nhập tài khoản và mật khẩu')
+                )
+              }
+              const body = {
+                username: username,
+                password: password
+              }
+              axios({
+                method: 'post',
+                url: 'https://appdatphong.herokuapp.com/Login',
+                data: body
+              })
+                .then(function (response) {
+                  console.log(response);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                })
               navigation.navigate('Home')
+              alert('Chức Mừng bạn đã đăng nhập thành công')
             }}
           >
             <Text style={{ color: COLORS.white, fontSize: 20 }}>Login</Text>
@@ -119,13 +143,28 @@ const Login = ({ navigation }) => {
             justifyContent: 'center'
           }}
             onPress={() => {
-              console.log('SignUp')
+              const body = {
+                username: username,
+                password: password
+              }
+              axios({
+                method: 'post',
+                url: 'https://appdatphong.herokuapp.com/signup',
+                data: body
+              })
+                .then(function (response) {
+                  console.log(response);
+                  alert("Chúc Mừng bạn đã tạo tài khoản thành công")
+                })
+                .catch(function (error) {
+                  console.log(error)
+                })
             }}
           >
             <Text style={{ color: COLORS.white, fontSize: 20 }}>SignUp</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View >
     )
   }
   return (

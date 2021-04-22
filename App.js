@@ -4,6 +4,8 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { Home } from './src/screens'
 import Login from './src/components/Login';
 import Tabs from './src/navigation/Tab';
+import Drawers from './src/navigation/drawer'
+
 
 const Stack = createStackNavigator();
 
@@ -25,6 +27,7 @@ const App = () => {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Tabs} />
+        <Stack.Screen name="Drawer" component={Drawers} />
       </Stack.Navigator>
     </NavigationContainer>
   )

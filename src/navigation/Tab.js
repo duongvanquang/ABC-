@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FONTS, images, icons, SIZES, COLORS } from '../constants'
 import { Home } from '../screens';
@@ -65,7 +65,7 @@ const TabBarCustomButton = ({ accessibilityLabel, accessibilityState, children, 
                     alignItems: 'center',
                     width: 50,
                     height: 50,
-                    backgroundColor: COLORS.white
+                    backgroundColor: COLORS.white,
                 }}
                 activeOpacity={1}
                 onPress={onPress}
@@ -131,11 +131,13 @@ const Tabs = () => {
                     tabBarButton: (props) => (
                         <TabBarCustomButton {
                             ...props
-                        } />
+
+                        }
+                        />
                     )
                 }}
             />
-             <Tab.Screen name="profile" component={Profile}
+            <Tab.Screen name="profile" component={Profile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image source={icons.user}
@@ -191,7 +193,8 @@ const Tabs = () => {
                     tabBarButton: (props) => (
                         <TabBarCustomButton {
                             ...props
-                        } />
+                        }
+                        />
                     )
                 }}
             />

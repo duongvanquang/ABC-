@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react'
+import { SafeAreaView } from 'react-native';
+import { View, Text,TouchableOpacity } from 'react-native';
 
-export default class Infor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
 
-  render() {
-    return (
-      <View>
-        <Text> Infor </Text>
-      </View>
-    );
-  }
+const Infor = ({navigation}) => {
+  return (
+    <SafeAreaView style  ={{ flex:1}}>
+      <View style  ={{ flex:1, backgroundColor: 'green', marginTop:100}}>
+      <TouchableOpacity
+      onPress ={()=>{
+        navigation.navigate('Drawer')
+      }}>
+        <Text>xxxxxx</Text>
+      </TouchableOpacity>
+    </View>
+    </SafeAreaView>
+  )
 }
+export default Infor;
