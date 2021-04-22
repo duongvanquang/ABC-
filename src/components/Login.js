@@ -111,8 +111,8 @@ const Login = ({ navigation }) => {
                 )
               }
               const body = {
-                username: username,
-                password: password
+                username: '',
+                password: ''
               }
               axios({
                 method: 'post',
