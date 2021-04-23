@@ -1,6 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native'
+
 import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native'
+import { View, Text, TouchableOpacity, 
+  StyleSheet, SafeAreaView, Image } from 'react-native'
 import { SIZES, FONTS, images, icons, COLORS } from '../constants'
 
 const HeaderBar = ({ navigation }) => {

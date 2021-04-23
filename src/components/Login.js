@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import {
   Text, View, TouchableOpacity, Image,
@@ -6,11 +6,36 @@ import {
 } from 'react-native';
 import { FONTS, COLORS, icons, images, SIZES } from '../constants'
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+const isLogin = 'IS_LOGIN'
 const Login = ({ navigation }) => {
-  const [showPassword, setPassword] = React.useState(false)
-  const [username, password] = React.useState()
+  const [showPassword, setShowPassword] = React.useState(false)
+  const [username, setUserName] = React.useState(false)
+  const [password, setPassword] = React.useState(false)
+
+  useEffect(() => {
+    getData()
+  }, [])
+  async function getData() {
+    try {
+      const value = await AsyncStorage.getItem(isLogin)
+      if (value !== null && !!value) {
+        navigation.navigate('Home')
+      }
+    } catch (e) {
+      // error reading value
+    }
+  }
+
+  async function storeData() {
+    try {
+      await AsyncStorage.setItem(isLogin, 'value')
+    } catch (e) {
+      // saving error
+    }
+  }
   function renderLogo() {
     return (
       <View style={{
@@ -49,6 +74,7 @@ const Login = ({ navigation }) => {
             placeholder="Enter Name"
             placeholderTextColor={COLORS.purple}
             selectionColor={COLORS.white}
+            onChangeText={setUserName}
           />
         </View>
         <View style={{ marginTop: SIZES.padding * 2 }}>
@@ -65,6 +91,7 @@ const Login = ({ navigation }) => {
             placeholderTextColor={COLORS.purple}
             selectionColor={COLORS.white}
             secureTextEntry={!showPassword}
+            onChangeText={setPassword}
           />
           <TouchableOpacity
             style={{
@@ -75,7 +102,7 @@ const Login = ({ navigation }) => {
               width: 30
             }}
             onPress={() => {
-              setPassword(!showPassword)
+              setShowPassword(!showPassword)
             }}>
             <Image
               source={showPassword ? icons.disable_eye : icons.eye}
@@ -105,27 +132,31 @@ const Login = ({ navigation }) => {
             justifyContent: 'center'
           }}
             onPress={() => {
-              if (!!username && !!password) {
-                return (
-                  alert('Vui Lòng nhập tài khoản và mật khẩu')
-                )
+              if (!username || !password) {
+                alert('Vui Lòng nhập tài khoản và mật khẩu')
+                return
               }
               const body = {
-                username: '',
-                password: ''
+                username: username,
+                password: password
               }
               axios({
                 method: 'post',
                 url: 'https://appdatphong.herokuapp.com/Login',
                 data: body
               })
-                .then(function (response) {
-                  console.log(response);
+                .then(function ({ data }) {
+                  if (data?.data?.length !== 0) {
+                    console.log({ data })
+                    storeData()
+                    navigation.navigate('Home')
+                  } else {
+                    alert('Tài khoản mật khẩu không đúng')
+                  }
                 })
                 .catch(function (error) {
                   console.log(error);
                 })
-              navigation.navigate('Home')
               alert('Chức Mừng bạn đã đăng nhập thành công')
             }}
           >
@@ -152,9 +183,10 @@ const Login = ({ navigation }) => {
                 url: 'https://appdatphong.herokuapp.com/signup',
                 data: body
               })
-                .then(function (response) {
-                  console.log(response);
+                .then(function ({ data }) {
+                  console.log({ data });
                   alert("Chúc Mừng bạn đã tạo tài khoản thành công")
+                  navigation.navigate("Login")
                 })
                 .catch(function (error) {
                   console.log(error)

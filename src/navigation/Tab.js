@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, TouchableWithoutFeedba
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FONTS, images, icons, SIZES, COLORS } from '../constants'
 import { Home } from '../screens';
-import Infor from '../screens/Infor';
+import Scan from '../screens/Scan';
 import Profile from '../screens/Profile'
 import Maps from '../screens/Maps'
 import Svg, {
@@ -177,10 +177,10 @@ const Tabs = () => {
                     )
                 }}
             />
-            <Tab.Screen name="Infor" component={Infor}
+            <Tab.Screen name="Scan" component={Scan}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image source={icons.info}
+                        <Image source={icons.scan}
                             resizeMode="contain"
                             style={{
                                 width: 25,

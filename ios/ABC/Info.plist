@@ -35,6 +35,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>DigitalWalletApp needs to scan code.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs to get your location...</string>
 	<key>UILaunchStoryboardName</key>
