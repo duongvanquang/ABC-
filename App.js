@@ -5,6 +5,7 @@ import { Home } from './src/screens'
 import Login from './src/components/Login';
 import Tabs from './src/navigation/Tab';
 import Drawers from './src/navigation/drawer'
+import Boarding from './src/components/Onboarding';
 
 
 const Stack = createStackNavigator();
@@ -23,8 +24,9 @@ const App = () => {
       <Stack.Navigator screenOptions={{
         headerShown: false
       }}
-        initialRouteName={'Login'}
+        initialRouteName={'Onboarding'}
       >
+        <Stack.Screen name="Boarding" component={Boarding} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="Drawer" component={Drawers} />

@@ -140,7 +140,7 @@ const Tabs = () => {
             <Tab.Screen name="profile" component={Profile}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image source={icons.user}
+                        <Image source={icons.messenger}
                             resizeMode="contain"
                             style={{
                                 width: 25,

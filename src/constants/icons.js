@@ -16,7 +16,8 @@ const scan = require("../assets/icons/scan.png");
 const send = require("../assets/icons/send.png");
 const user = require("../assets/icons/user.png");
 const wallet = require("../assets/icons/wallet.png");
-const menu =  require("../assets/icons/menu.png")
+const menu =  require("../assets/icons/menu.png");
+const messenger =  require ('../assets/icons/messenger.png')
 
 export default {
     back,
@@ -37,5 +38,6 @@ export default {
     send,
     user,
     wallet,
-    menu
+    menu,
+    messenger
 }

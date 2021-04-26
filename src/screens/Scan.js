@@ -66,9 +66,9 @@ const Scan = ({ navigation }) => {
           source={images.focus}
           resizeMode="stretch"
           style={{
-            marginTop:"-55%",
-            width:200,
-            height:300
+            marginTop: "-55%",
+            width: 200,
+            height: 300
           }} />
 
       </View>
@@ -160,6 +160,10 @@ const Scan = ({ navigation }) => {
     )
   }
 
+  function onBarCodeRead(result) {
+    console.log(result.data)
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.transparent }}>
       <RNCamera
@@ -170,6 +174,7 @@ const Scan = ({ navigation }) => {
         captureAudio={false}
         type={RNCamera.Constants.Type.back}
         flashMode={RNCamera.Constants.FlashMode.off}
+        onBarCodeRead={onBarCodeRead}
         androidCameraPermissionOptions={{
           title: "Permission to use camera",
           message: "Camera is required for barcode scanning",
