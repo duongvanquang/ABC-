@@ -1,24 +1,14 @@
 import React from 'react'
 
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native'
-import {
-  Container,
-  Card,
-  UserInfo,
-  UserImgWrapper,
-  UserImg,
-  UserInfoText,
-  UserName,
-  PostTime,
-  MessageText,
-  TextSection,
-} from '../constants/styleMessages'
+import { View, Text, Button, StyleSheet, FlatList, Image, SafeAreaView } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { COLORS, FONTS, images, SIZES } from '../constants';
 
 const Messages = [
   {
     id: '1',
     userName: 'Jenny Doe',
-    userImg: {uri:'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-5.jpg'},
+    userImg: images.image1,
     messageTime: '4 mins ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
@@ -26,7 +16,7 @@ const Messages = [
   {
     id: '2',
     userName: 'John Doe',
-    userImg: {uri:'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-7.jpg'},
+    userImg: images.image2,
     messageTime: '2 hours ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
@@ -34,7 +24,7 @@ const Messages = [
   {
     id: '3',
     userName: 'Ken William',
-    userImg: {uri:'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-9.jpg'},
+    userImg: images.image3,
     messageTime: '1 hours ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
@@ -42,7 +32,7 @@ const Messages = [
   {
     id: '4',
     userName: 'Selina Paul',
-    userImg: {uri:'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-16.jpg'},
+    userImg: images.image4,
     messageTime: '1 day ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
@@ -50,7 +40,7 @@ const Messages = [
   {
     id: '5',
     userName: 'Christy Alex',
-    userImg: {uri:'https://dean2020.edu.vn/wp-content/uploads/2019/03/anh-thien-nhien-dep-19.jpg'},
+    userImg: images.usFlag,
     messageTime: '2 days ago',
     messageText:
       'Hey there, this is my test for a post of my social app in React Native.',
@@ -58,17 +48,87 @@ const Messages = [
 ];
 
 const MessagesScreen = ({ navigation }) => {
+  const renderItem = ({ item }) => {
+    return (
+      <View style={{
+        marginTop: SIZES.padding * 3
+      }}>
+        <TouchableOpacity
+          style={{
+            width: '100%'
+          }}
+          onPress={() => {
+            navigation.navigate('Chart', { userName: item.userName })
+          }}
+        >
+          <View style={{
+            flexDirection: 'row', justifyContent: 'space-between'
+          }}>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}>
+              <View style={{
+                paddingTop: 15,
+                paddingBottom: 15
+              }}>
+                <Image
+                  source={item.userImg}
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 25
+                  }}
+                />
+              </View>
+            </View>
+            <View style={{
+              flexDirection: 'column',
+              justifyContent: 'center',
+              padding: 15,
+              paddingLeft: 0,
+              marginLeft: 10,
+              width: 300,
+              borderBottomWidth: 1,
+              borderBottomColor: ' #cccccc'
+            }}>
+              <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginBottom: 5
+              }}>
+                <Text style={{
+                  fontSize: 14, fontWeight: 'bold',
+                }}>{item.userName}</Text>
+                <Text style={{
+                  fontSize: 12, color: COLORS.green
+                }}>{item.messageTime}</Text>
+
+              </View>
+              <Text style={{
+                fontSize: 14, color: '#333333'
+              }}>{item.messageText}</Text>
+            </View>
+          </View>
+
+        </TouchableOpacity>
+      </View>
+    )
+  }
   return (
-    <Container>
+    <View style={{
+      flex: 1,
+      paddingLeft: 20,
+      paddingRight: 20,
+      alignItems: 'center',
+      backgroundColor: '#ffffff'
+    }}>
       <FlatList
         data={Messages}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <Vew>
-            <Text>{item.userImg}</Text>
-          </Vew>
-        )}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
       />
-    </Container>
+    </View>
   )
 }
+export default MessagesScreen;
