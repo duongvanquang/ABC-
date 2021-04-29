@@ -46,9 +46,11 @@ const Boarding = ({ navigation }) => {
                     image: <Image
                         source={{ uri: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80' }}
                         style={{
-                            height: 420,
                             width: '100%',
-                            borderBottomLeftRadius: 100
+                            height: 450,
+                            borderBottomLeftRadius: 150,
+                            borderTopRightRadius:150
+                        
                         }}
                     />,
                     title: 'Connect to the Word',
@@ -60,8 +62,9 @@ const Boarding = ({ navigation }) => {
                     image: <Image source={{ uri: 'https://img.thuthuatphanmem.vn/uploads/2018/10/09/hinh-anh-thien-nhien-dep-va-dac-biet-nhat_041755603.jpg' }}
                         style={{
                             width: '100%',
-                            height: 420,
-                            borderBottomLeftRadius: 100
+                            height: 450,
+                            borderBottomLeftRadius: 150,
+                            borderTopRightRadius:150
                         }} />,
                     title: 'Share your Favorites',
                     subtitle: 'Share your connect with similar kind of poeple',
@@ -69,10 +72,12 @@ const Boarding = ({ navigation }) => {
                 {
                     backgroundColor: '#CC6666',
                     image: <Image source={{ uri: 'https://img.thuthuatphanmem.vn/uploads/2018/10/09/anh-thien-nhien-dep-nhat_041753931.jpg' }}
+                        
                         style={{
                             width: '100%',
-                            height: 420,
-                            borderBottomLeftRadius: 100
+                            height: 450,
+                            borderBottomLeftRadius: 150,
+                            borderTopRightRadius:150
                         }} />,
                     title: 'Become Star',
                     subtitle: 'let the spot light capture you',
