@@ -15,9 +15,9 @@ const OptionItem = ({ bgColor, icon, label, onPress }) => {
     >
       <View style={[styles.shadow, { width: 60, height: 60 }]}>
         <LinearGradient
-          style={[{ flex: 1, alignItems: 'center', justifyContent: 'center', borderRadius: 15, backgroundColor: 'red' }]}
+          style={[{ flex: 1, alignItems: 'center', justifyContent: 'center', borderRadius: 15, backgroundColor:'red'}]}
           colors={bgColor}
-          start={{ x: 0, y: 0 }}
+          start={{ x:0, y: 0 }}
           end={{ x: 0, y: 1 }}
         >
           <Image
@@ -69,7 +69,7 @@ const Home = ({ navigation }) => {
     return (
       <TouchableOpacity
         style={{ justifyContent: 'center', marginHorizontal: SIZES.base, ...destinationStyle,...styles.shadow }}
-        onPress={() => { navigation.navigate("DestinationDetail", item)}}
+        onPress={() => { navigation.navigate("DestinationDetail", {item:item.img})}}
       >
         <Image
           source={item.img}
@@ -88,7 +88,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <HeaderBar />
-      <View style={{ flex: 0.5, marginTop: SIZES.base, paddingHorizontal: SIZES.padding, }}>
+      <View style={{ flex: 0.5, marginTop: SIZES.base, paddingHorizontal: SIZES.padding,...styles.shadow }}>
         <Image
           source={images.homeBanner}
           resizeMode="cover"

@@ -98,7 +98,7 @@ const DestinationDetail = ({ route, navigation }) => {
           }}
         />
       )
-    }
+    } else { }
   }
   return (
     <View style={styles.container}>
@@ -146,7 +146,7 @@ const DestinationDetail = ({ route, navigation }) => {
             //height: 50,
             flexDirection: 'row'
           }}>
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, marginTop: SIZES.padding * 3 }}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('Home')} >
                 <Image
