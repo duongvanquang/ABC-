@@ -10,7 +10,7 @@ export default class Setting extends Component {
 
   render() {
     return (
-      <View>
+      <View style = {{ flex:1, backgroundColor:'green'}}>
         <Text> Setting </Text>
       </View>
     );

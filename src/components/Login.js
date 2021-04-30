@@ -133,7 +133,7 @@ const Login = ({ navigation }) => {
           }}
             onPress={() => {
               if (!username || !password) {
-                alert('Vui Lòng nhập tài khoản và mật khẩu')
+                alert('Mày ngu lắm')
                 return
               }
               const body = {
@@ -148,7 +148,8 @@ const Login = ({ navigation }) => {
                 .then(function ({ data }) {
                   if (data?.data?.length !== 0) {
                     console.log({ data })
-                    storeData()
+                    alert('Chức Mừng bạn đã đăng nhập thành công')
+                   // storeData()
                     navigation.navigate('Home')
                   } else {
                     alert('Tài khoản mật khẩu không đúng')
@@ -157,7 +158,6 @@ const Login = ({ navigation }) => {
                 .catch(function (error) {
                   console.log(error);
                 })
-              alert('Chức Mừng bạn đã đăng nhập thành công')
             }}
           >
             <Text style={{ color: COLORS.white, fontSize: 20 }}>Login</Text>

@@ -5,24 +5,23 @@ import {
   StyleSheet, SafeAreaView, Image
 } from 'react-native'
 import { SIZES, FONTS, images, icons, COLORS } from '../constants'
+import { useNavigation } from '@react-navigation/native';
 
-const HeaderBar = ({ navigation }) => {
+const HeaderBar = () => {
+  const navigation = useNavigation(); 
   return (
     <SafeAreaView style={{
       height: 150, width: '100%',
       backgroundColor: COLORS.emerald,
       flexDirection: 'row',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center'
     }}>
       <View style={{ flex: 1, marginLeft: 5 }}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Drawer')
-          }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Drawer')}>
           <Image
             source={icons.menu}
-            resizeMode="contain"
+            resizeMode="cover"
             style={{
               width: 40,
               height: 40
@@ -48,7 +47,7 @@ const HeaderBar = ({ navigation }) => {
           alignItems: 'center',
           justifyContent: 'center',
           //...styles.styleSunny
-            
+
         }}>
           <Image
             source={icons.sunny}
@@ -56,7 +55,7 @@ const HeaderBar = ({ navigation }) => {
               width: 30,
               height: 30,
               tintColor: COLORS.yellow,
-              
+
             }}
           />
         </View>
@@ -73,22 +72,22 @@ const HeaderBar = ({ navigation }) => {
               width: 30,
               height: 30,
               tintColor: COLORS.white,
-              
+
             }}
           />
         </View>
       </TouchableOpacity>
-    </SafeAreaView>
+    </SafeAreaView >
   )
 }
-const styles  = StyleSheet.create({
-  styleMoon :{
-    borderRadius:20,
-    backgroundColor:COLORS.black
+const styles = StyleSheet.create({
+  styleMoon: {
+    borderRadius: 20,
+    backgroundColor: COLORS.black
   },
-  styleSunny :{
-    borderRadius:20,
-    backgroundColor:COLORS.yellow
+  styleSunny: {
+    borderRadius: 20,
+    backgroundColor: COLORS.yellow
   }
 })
 export default HeaderBar;
