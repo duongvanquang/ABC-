@@ -19,6 +19,8 @@ pod 'Google-Maps-iOS-Utils'
 
   pod 'ReactNativeGetLocation', :path => '../node_modules/react-native-get-location'
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'ABCTests' do
     inherit! :complete
     # Pods for testing
