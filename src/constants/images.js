@@ -13,6 +13,7 @@ const beach = require("../assets/images/beach.jpeg");
  const onboardingImage = require("../assets/images/onboarding_image.jpg");
  const skiVilla = require("../assets/images/ski_villa.jpg");
  const skiVillaBanner = require("../assets/images/ski_villa_banner.jpg");
+ const NTTX = require("../assets/images/NTTX.jpg")
 
 
 // Dummy
@@ -36,4 +37,5 @@ export default {
     onboardingImage,
     skiVilla,
     skiVillaBanner,
+    NTTX
 }

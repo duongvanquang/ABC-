@@ -69,7 +69,7 @@ const Home = ({ navigation }) => {
     return (
       <TouchableOpacity
         style={{ justifyContent: 'center', marginHorizontal: SIZES.base, ...destinationStyle,...styles.shadow }}
-        onPress={() => { navigation.navigate("DestinationDetail", {item:item.img})}}
+        onPress={() => { navigation.navigate("DestinationDetail", item)}}
       >
         <Image
           source={item.img}

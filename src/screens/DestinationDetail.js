@@ -85,10 +85,22 @@ const IconLabel = ({ icon, label }) => {
 }
 
 const DestinationDetail = ({ route, navigation }) => {
+  const item = route.params
   function renderItemImg() {
-    let { item } = route.params;
-    if (item) {
-      return (
+    return (
+      <Image
+        source={item.img}
+        style={{
+          width: 70,
+          height: 70, borderRadius: 15
+
+        }}
+      />
+    )
+  }
+  return (
+    <View style={styles.container}>
+      <View style={{ flex: 2 }}>
         <Image
           source={item.img}
           resizeMode="cover"
@@ -97,13 +109,6 @@ const DestinationDetail = ({ route, navigation }) => {
             height: '80%'
           }}
         />
-      )
-    } else { }
-  }
-  return (
-    <View style={styles.container}>
-      <View style={{ flex: 2 }}>
-        {renderItemImg()}
         <View style={[{
           position: 'absolute',
           bottom: '5%',
@@ -116,17 +121,10 @@ const DestinationDetail = ({ route, navigation }) => {
         }>
           <View style={{ flexDirection: 'row' }}>
             <View style={styles.shadow}>
-              <Image
-                source={images.skiVilla}
-                resizeMode="cover"
-                style={{
-                  width: 70,
-                  height: 70, borderRadius: 15
-                }}
-              />
+              {renderItemImg()}
             </View>
             <View style={{ marginHorizontal: SIZES.radius, justifyContent: 'space-around' }}>
-              <Text style={{ ...FONTS.h3 }}>SkiVilla</Text>
+              <Text style={{ ...FONTS.h3 }}>{item.name}</Text>
               <Text style={{ ...FONTS.body3 }}>France</Text>
               <StarReview
                 rate={4.5}
@@ -222,7 +220,10 @@ const DestinationDetail = ({ route, navigation }) => {
 
             <TouchableOpacity
               style={{ width: 130, height: '80%', marginHorizontal: SIZES.radius }}
-              onPress={() => { console.log("Booking on pressed") }}
+              onPress={() => {
+                console.log("Booking on pressed")
+                alert('Chúc Mừng bạn đã Booking Thành Công')
+              }}
             >
               <LinearGradient
                 style={[{ flex: 1, alignItems: 'center', justifyContent: 'center', borderRadius: 10 }]}

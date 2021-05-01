@@ -1,89 +1,62 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
-import { View, Text, Image, SafeAreaView, StatusBar, Button } from 'react-native'
-import Onboarding from 'react-native-onboarding-swiper';
+import { View, Text, TouchableOpacity, ImageBackground, StatusBar, StyleSheet } from 'react-native'
+import { COLORS, FONTS, images, SIZES } from '../constants'
+import LinearGradient from 'react-native-linear-gradient';
 
-
-
-const Boarding = ({ navigation }) => {
-    const Skip = ({ ...props }) => {
-        return (
-            <Button
-                title='Skip'
-                color='#000000'
-            />
-        )
-    }
-    const Next = ({ ...props }) => {
-        return (
-            <Button
-                title='Skip'
-                color='#000000'
-                {...props}
-            />
-        )
-    }
-    const Done = ({ ...props }) => {
-        return (
-            <Button
-                title='Skip'
-                color='#000000'
-                {...props}
-            />
-        )
-    }
+const Onboarding = ({ navigation }) => {
     return (
-        <Onboarding
-            SkipButtonComponent={Skip}
-            NextButtonComponent={Next}
-            DoneButtonComponen={Done}
-            onSkip={() => navigation.replace('Login')}
-            onDone={() => navigation.navigate('Login')}
-            style={{ flex: 1 }}
-            pages={[
-                {
-                    backgroundColor: '#a6e4d0',
-                    image: <Image
-                        source={{ uri: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80' }}
-                        style={{
-                            width: '100%',
-                            height: 450,
-                            borderBottomLeftRadius: 150,
-                            borderTopRightRadius:150
-                        
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <StatusBar translucent backgroundColor="rgba(0,0,0,0)" />
+            <ImageBackground
+                source={images.NTTX}
+                style={{
+                    width: '100%',
+                    height: '100%',
+                }}>
+                <View style={styles.details}>
+                    <Text style={{ color: COLORS.green, fontSize: 35, fontWeight: 'bold' }}>Discover</Text>
+                    <Text style={{ color: COLORS.purple, fontSize: 35, fontWeight: 'bold' }}> Word with us</Text>
+                    <Text style={{ color: COLORS.lightGray, lineHeight: 20, marginTop: 15 }}>Easy solution to buy tickets for your travel, business trips,
+                    transportation, lodging and culinary</Text>
+                    <TouchableOpacity style={[styles.shadow, {
+                        marginTop: SIZES.padding * 2, width: 120,
+                        height: 50, alignItems: 'center', justifyContent: 'center'
+                    }]}
+                        onPress={() => {
+                            navigation.navigate('Login')
+                        }}>
+                        <LinearGradient style={{
+                            height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 15
                         }}
-                    />,
-                    title: 'Connect to the Word',
-                    subtitle: 'A new way to connect with the word'
-
-                },
-                {
-                    backgroundColor: '#66CCCC',
-                    image: <Image source={{ uri: 'https://img.thuthuatphanmem.vn/uploads/2018/10/09/hinh-anh-thien-nhien-dep-va-dac-biet-nhat_041755603.jpg' }}
-                        style={{
-                            width: '100%',
-                            height: 450,
-                            borderBottomLeftRadius: 150,
-                            borderTopRightRadius:150
-                        }} />,
-                    title: 'Share your Favorites',
-                    subtitle: 'Share your connect with similar kind of poeple',
-                },
-                {
-                    backgroundColor: '#CC6666',
-                    image: <Image source={{ uri: 'https://img.thuthuatphanmem.vn/uploads/2018/10/09/anh-thien-nhien-dep-nhat_041753931.jpg' }}
-                        
-                        style={{
-                            width: '100%',
-                            height: 450,
-                            borderBottomLeftRadius: 150,
-                            borderTopRightRadius:150
-                        }} />,
-                    title: 'Become Star',
-                    subtitle: 'let the spot light capture you',
-                },
-            ]}
-        />
+                            colors={['#46aeff', '#5884ff']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                        >
+                            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Get Start!</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+        </View>
     )
 }
-export default Boarding;
+const styles = StyleSheet.create({
+    details: {
+        height: '50%',
+        bottom: 0,
+        position: 'absolute',
+        paddingHorizontal: 40
+    },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    }
+})
+export default Onboarding;
