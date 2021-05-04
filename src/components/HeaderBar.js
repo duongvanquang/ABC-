@@ -8,7 +8,7 @@ import { SIZES, FONTS, images, icons, COLORS } from '../constants'
 import { useNavigation } from '@react-navigation/native';
 
 const HeaderBar = () => {
-  const navigation = useNavigation(); 
+ // const navigation = useNavigation(); 
   return (
     <SafeAreaView style={{
       height: 150, width: '100%',

@@ -26,6 +26,7 @@ export default class Maps extends Component {
       })
   }
   render() {
+    const  Location =  this.state
     return (
       <View style={{ flex: 1 }}>
         <MapView
@@ -39,7 +40,7 @@ export default class Maps extends Component {
         >
           <Marker
           coordinate={{ latitude : Location.latitude , longitude : Location.longitude }}
-          image={{uri: 'custom_pin'}}
+          //image={{uri: 'custom_pin'}}
           />
         </MapView>
       </View>

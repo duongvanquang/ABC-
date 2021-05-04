@@ -149,7 +149,7 @@ const Login = ({ navigation }) => {
                   if (data?.data?.length !== 0) {
                     console.log({ data })
                     alert('Chức Mừng bạn đã đăng nhập thành công')
-                   // storeData()
+                   storeData()
                     navigation.navigate('Home')
                   } else {
                     alert('Tài khoản mật khẩu không đúng')
