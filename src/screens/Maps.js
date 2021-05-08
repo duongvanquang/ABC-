@@ -26,7 +26,7 @@ export default class Maps extends Component {
       })
   }
   render() {
-    const  Location =  this.state
+    const  Location =  this.state.Location
     return (
       <View style={{ flex: 1 }}>
         <MapView
